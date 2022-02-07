@@ -25,6 +25,7 @@ class TelaAluguel(AbstractTela):
         print("DATA DO ALUGUEL: ", dados_aluguel["data_aluguel"])
         print("\n")
 
+        
     # Implementar método
     def mostra_carros_disponiveis(self):
         pass
