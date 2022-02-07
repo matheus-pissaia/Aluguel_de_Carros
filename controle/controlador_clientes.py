@@ -1,74 +1,59 @@
 from limite.tela_cliente import TelaCliente
+from entidade.cliente import Cliente
 
+class ControladorClientes():
 
-class ControladorClientes:
-    def __init__(self):
-        self.__tela_cliente = TelaCliente(self)
-        self.__cliente = []
+  def __init__(self, controlador_sistema):
+    self.__clientes = []
+    self.__tela_cliente = TelaCliente()
+    self.__controlador_sistema = controlador_sistema
 
-    def inicia(self):
-        self.tela_inicial()
+  def pega_cliente_por_cpf(self, cpf: int):
+    for cliente in self.__clientes:
+      if(cliente.cpf == cpf):
+        return cliente
+    return None
 
-    def incluir_cliente(self):
-        continuar = "s"
-        while continuar == "S" or continuar == "s":
-            while True:
-                try:
-                    a = int(input("CPF: "))
-                    break
-                except ValueError:
-                    print("CPF deve conter apenas numeros!")
-                print("Digite novamente:")
-            b = str(input("Nome: "))
-            while True:
-                try:
-                    c = int(input("Idade: "))
-                    break
-                except ValueError:
-                    print("Somente numeros")
-                print("Tente novamente")
-            d = str(input("Email: "))
-            while True:
-                try:
-                    e = str(input("Telefone: "))
-                    break
-                except ValueError:
-                    print("Telefone deveria conter apenas numeros ")
-                print("Digite novamente: ")
-            cliente = Cliente(a, b, c, d, e)
+  def incluir_cliente(self):
+    dados_cliente = self.__tela_cliente.pega_dados_cliente()
+    cliente = Cliente(dados_cliente["nome"], dados_cliente["telefone"], dados_cliente["cpf"])
+    self.__clientes.append(cliente)
 
-            if cliente not in self.__cliente and isinstance(cliente, Cliente):
-                self.__cliente.append(cliente)
+  def alterar_cliente(self):
+    self.lista_clientes()
+    cpf_amigo = self.__tela_cliente.seleciona_cliente()
+    cliente = self.pega_cliente_por_cpf(cpf_cliente)
 
-            continuar = str(input("S/s pra continuar. 0 voltar"))
+    if(cliente is not None):
+      novos_dados_cliente = self.__tela_cliente.pega_dados_cliente()
+      cliente.nome = novos_dados_cliente["nome"]
+      cliente.telefone = novos_dados_cliente["telefone"]
+      cliente.cpf = novos_dados_cliente["cpf"]
+      self.lista_clientes()
+    else:
+      self.__tela_cliente.mostra_mensagem("cliente não existente")
 
-    def excluir_cliente(self, cliente: Cliente):
-        for cliente in self.__cliente:
-            print(cliente)
-        if isinstance(cliente, Cliente) and (cliente in self.__cliente):
-            self.__cliente.remove(cliente)
+  def lista_clientes(self):
+    for cliente in self.__clientes:
+      self.__tela_cliente.mostra_cliente({"nome": cliente.nome, "telefone": cliente.telefone, "cpf": cliente.cpf})
 
-    def listar_clientes(self):
-        print("Clientes cadastrados no sistema: ")
-        for cliente in self.__cliente:
-            print(cliente)
+  def excluir_cliente(self):
+    self.lista_clientes()
+    cpf_cliente = self.__tela_cliente.seleciona_cliente()
+    amigo = self.pega_amigo_por_cpf(cpf_amigo)
 
-    def buscar_cliente_por_cpf(self):
-        print("Buscar um cliente ")
-        cpf = int(input("Digite o CPF: "))
-        for cliente in self.__cliente:
-            if cliente.cpf == cpf:
-                return cliente
-            return  "Cliente não encontrado"
+    if(cliente is not None):
+      self.__clientes.remove(cliente)
+      self.lista_clientes()
+    else:
+      self.__tela_cliente.mostra_mensagem("cliente não existente")
 
-    def encerrar_sistema(self):
-        exit(0)
+  def retornar(self):
+    self.__controlador_sistema.abre_tela()
 
-    def tela_inicial(self):
-        caso = {0: self.encerrar_sistema, 1: self.incluir_cliente, 2: self.excluir_cliente,
-                3: self.listar_clientes, 4: self.buscar_cliente, 5: self.encerrar_sistema}
+  def abre_tela(self):
+    lista_opcoes = {1: self.incluir_cliente, 2: self.alterar_cliente, 3: self.lista_clientes, 4: self.excluir_cliente, 0: self.retornar}
 
-        while True:
-            opcao = self.__tela_cliente.exibe_opcoes()
-            opcao_escolhida = caso[opcao]
-            opcao_escolhida()
+    continua = True
+    while continua:
+      lista_opcoes[self.__tela_cliente.tela_opcoes()]()
