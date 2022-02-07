@@ -1,4 +1,6 @@
-class TelaFuncionario:
+from abstract_tela import AbstractTela
+
+class TelaFuncionario(AbstractTela):
     def __init__(self, controlador):
         self.__controlador = controlador
 
