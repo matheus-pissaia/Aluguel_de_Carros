@@ -43,7 +43,6 @@ class ControladorAlugueis:
     def mostra_carros_disponiveis(self):
         pass
 
-    # Falta fazer as verificações e tratamento de exceções
     def incluir_aluguel(self):
         dados_aluguel = self.__tela_aluguel.pega_dados_aluguel()
 

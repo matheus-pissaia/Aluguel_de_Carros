@@ -7,10 +7,13 @@ from datetime import date
 class Aluguel:
 
     def __init__(self, cliente: Cliente, funcionario: Funcionario, carro: Carro, codigo: int, data_aluguel: date):
-        if isinstance(cliente, Cliente):
-            self.__cliente = cliente
+        if cliente.idade <= 18:
+            raise Exception("O Cliente precisa ter mais de 18 anos para alugar um carro!")
         else:
-            raise Exception("Erro ao incluir o aluguel: Cliente inválido")
+            if isinstance(cliente, Cliente):
+                self.__cliente = cliente
+            else:
+                raise Exception("Erro ao incluir o aluguel: Cliente inválido")
 
         if isinstance(funcionario, Funcionario):
             self.__funcionario = funcionario
