@@ -1,32 +1,34 @@
-from abstract_tela import AbstractTela
+class TelaCliente():
+  def tela_opcoes(self):
+    print("-------- CLIENTES ----------")
+    print("Escolha a opcao")
+    print("1 - Incluir Cliente")
+    print("2 - Alterar Cliente")
+    print("3 - Listar Clientes")
+    print("4 - Excluir Cliente")
+    print("0 - Retornar")
 
+    opcao = int(input("Escolha a opcao: "))
+    return opcao
 
-class TelaCliente(AbstractTela):
-    def __init__(self, controlador):
-        self.__controlador = controlador
+  def pega_dados_cliente(self):
+    print("-------- DADOS CLIENTE ----------")
+    nome = input("Nome: ")
+    telefone = input("Telefone: ")
+    cpf = input("CPF: ")
 
-    def le_inteiro(self, mensagem: str = "", inteiros_validos: [] = None ):
-        while True:
-            valor_lido = input(mensagem)
+    return {"nome": nome, "telefone": telefone, "cpf": cpf}
 
-            try:
-                inteiro = int(valor_lido)
+  def mostra_cliente(self, dados_cliente):
+    print("NOME DO CLIENTE: ", dados_cliente["nome"])
+    print("FONE DO CLIENTE: ", dados_cliente["telefone"])
+    print("CPF DO CLIENTE: ", dados_cliente["cpf"])
+    print("\n")
 
-                if inteiros_validos and inteiro not in inteiros_validos:
-                    raise ValueError
-                return inteiro
+  def seleciona_cliente(self):
+    cpf = input("CPF do cliente que deseja selecionar: ")
+    return cpf
 
-            except ValueError:
-                print("Valor incorreto, digite um inteiro valido")
-                if inteiros_validos:
-                    print("Valores validos: ", inteiros_validos)
+  def mostra_mensagem(self, msg):
+    print(msg)
 
-    def exibe_opcoes(self):
-        print("-------- CADASTRO DE CLIENTES --------")
-        print("1 -  Incluir novo cliente")
-        print("2 -  Excluir  cliente")
-        print("3 -  Listar  clientes")
-        print("4 -  Buscar  um cliente")
-        print("0 -  Voltar")
-        opcao = self.le_inteiro("Escolha a opcao: ", [1, 2, 3, 4, 0])
-        return opcao
