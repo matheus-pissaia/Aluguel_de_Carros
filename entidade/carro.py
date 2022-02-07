@@ -1,8 +1,8 @@
 class Carro:
     
-    def __init__(self, placa_carro: str, modelo_carro: str):
-        self.__placa = placa_carro
-        self.__modelo = modelo_carro
+    def __init__(self, placa: str, modelo: str):
+        self.__placa = placa
+        self.__modelo = modelo
 
     @property
     def placa_carro(self):
