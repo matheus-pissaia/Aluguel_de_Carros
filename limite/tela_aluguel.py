@@ -18,12 +18,15 @@ class TelaAluguel(AbstractTela):
         return opcao
 
     def mostra_alugueis(self, dados_aluguel):
-        print("CÓDIGO ALUGUEL: ", dados_aluguel["código"])
-        print("CLIENTE QUE ALUGOU: ", dados_aluguel["cliente"])
-        print("FUNCIONÁRIO RESPONSÁVEL: ", dados_aluguel["funcionario"])
-        print("CARRO ALUGADO: ", dados_aluguel["modelo"])
-        print("DATA DO ALUGUEL: ", dados_aluguel["data_aluguel"])
-        print("\n")
+        if dados_aluguel is not None:
+            print("CÓDIGO ALUGUEL: ", dados_aluguel["código"])
+            print("CLIENTE QUE ALUGOU: ", dados_aluguel["cliente"])
+            print("FUNCIONÁRIO RESPONSÁVEL: ", dados_aluguel["funcionario"])
+            print("CARRO ALUGADO: ", dados_aluguel["modelo"])
+            print("DATA DO ALUGUEL: ", dados_aluguel["data_aluguel"])
+            print("\n")
+        else:
+            print("Não há nenhum aluguel registrado.")
 
         
     # Implementar método
@@ -31,8 +34,12 @@ class TelaAluguel(AbstractTela):
         pass
 
     def mostra_carros_alugados(self, dados_carros_alugados):
-        print("PLACA: ", dados_carros_alugados["placa"])
-        print("MODELO: ", dados_carros_alugados["modelo"])
+        if dados_carros_alugados is not None:
+            print("PLACA: ", dados_carros_alugados["placa"])
+            print("MODELO: ", dados_carros_alugados["modelo"])
+
+        else:
+            print("Não há carros alugados ainda.")
 
     def mostra_mensagem(self, mensagem):
         print(mensagem)

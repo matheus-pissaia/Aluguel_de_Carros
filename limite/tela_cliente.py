@@ -5,21 +5,6 @@ class TelaCliente(AbstractTela):
     def __init__(self, controlador):
         self.__controlador = controlador
 
-    def le_inteiro(self, mensagem: str = "", inteiros_validos: [] = None ):
-        while True:
-            valor_lido = input(mensagem)
-
-            try:
-                inteiro = int(valor_lido)
-
-                if inteiros_validos and inteiro not in inteiros_validos:
-                    raise ValueError
-                return inteiro
-
-            except ValueError:
-                print("Valor incorreto, digite um inteiro valido")
-                if inteiros_validos:
-                    print("Valores validos: ", inteiros_validos)
 
     def exibe_opcoes(self):
         print("-------- CADASTRO DE CLIENTES --------")
@@ -28,5 +13,32 @@ class TelaCliente(AbstractTela):
         print("3 -  Listar  clientes")
         print("4 -  Buscar  um cliente")
         print("0 -  Voltar")
-        opcao = self.le_inteiro("Escolha a opcao: ", [1, 2, 3, 4, 0])
+        opcao = self.verifica_opcao("Escolha a opcao: ", [1, 2, 3, 4, 0])
         return opcao
+
+    def pega_dados_cliente(self):
+        print("----- DADOS CLIENTE -----")
+        cpf = int(input("Cpf: "))
+        nome = int(input("Nome: "))
+        telefone = int(input("Telefone: "))
+        idade = int(input("Idade: "))
+
+        return {"cpf": cpf, "nome": nome, "telefone": telefone, "idade": idade}
+
+    def mostra_cliente(self, dados_cliente):
+        if dados_cliente is not None:
+            print("NOME: ", dados_cliente["nome"])
+            print("CPF: ", dados_cliente["cpf"])
+            print("TELEFONE: ", dados_cliente["telefone"])
+            print("IDADE: ", dados_cliente["idade"])
+
+        else:
+            print("Cliente não encontrado!")
+
+    def mostra_mensagem(self, mensagem):
+        print(mensagem)
+
+    def seleciona_cliente(self):
+        cpf_cliente = int(input("CPF do cliente que deseja selecionar: "))
+
+        return cpf_cliente

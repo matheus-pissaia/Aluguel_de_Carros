@@ -3,6 +3,15 @@ from pessoa import Pessoa
 
 class Cliente(Pessoa):
     def __init__(self, nome: str, cpf: int, telefone: int, idade: int):
+        if not isinstance(nome, str):
+            raise Exception("Nome inválido! Digite apenas letras!")
+        if not isinstance(cpf, int):
+            raise Exception("Cpf inválido! Digite apenas números!")
+        if not isinstance(telefone, int):
+            raise Exception("Telefone inválido! Digite apenas números!")
+        if not isinstance(idade, int):
+            raise Exception("Idade inválida! Digite apenas números!")
+
         super().__init__(nome, cpf, telefone)
         if isinstance(idade, int):
             self.__idade = idade
