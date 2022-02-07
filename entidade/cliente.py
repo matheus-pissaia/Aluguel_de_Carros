@@ -6,9 +6,6 @@ class Cliente(Pessoa):
         super().__init__(nome, cpf, telefone)
         if isinstance(idade, int):
             self.__idade = idade
-        if isinstance(email, str):
-            self.__email = email
-
 
     @property
     def idade(self) -> int:
