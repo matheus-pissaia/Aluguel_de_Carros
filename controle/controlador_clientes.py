@@ -1,4 +1,7 @@
-class ControlaCliente:
+from limite.tela_cliente import TelaCliente
+
+
+class ControladorClientes:
     def __init__(self):
         self.__tela_cliente = TelaCliente(self)
         self.__cliente = []

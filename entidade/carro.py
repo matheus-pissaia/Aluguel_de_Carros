@@ -5,15 +5,19 @@ class Carro:
         self.__modelo = modelo
 
     @property
-    def placa_carro(self):
+    def placa(self) -> str:
         return self.__placa
-    @placa_carro.setter
-    def placa_carro(self, placa):
-        self.__placa = placa
+
+    @placa.setter
+    def placa(self, placa: str):
+        if isinstance(placa, str):
+            self.__placa = placa
 
     @property
-    def modelo_carro(self):
+    def modelo(self) -> str:
         return self.__modelo
-    @modelo_carro.setter
-    def modelo_carro(self, modelo):
-        self.__modelo = modelo
+
+    @modelo.setter
+    def modelo(self, modelo: str):
+        if isinstance(modelo, str):
+            self.__modelo = modelo

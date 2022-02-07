@@ -1,4 +1,4 @@
-class ControlaFuncionario:
+class ControladorFuncionarios:
     def __init__(self):
         self.__tela_funcionario = TelaFuncionario(self)
         self.__funcionario = []

@@ -20,11 +20,11 @@ class ControladorSistema:
     # Falta
     def abre_tela(self):
         lista_opcoes = {
-            1: "carros",
-            2: "clientes",
-            3: "funcionáros",
-            4: self.__controlador_alugueis.abre_tela(),
-            0: self.finaliza_sistema()
+            1: self.__controlador_carros,
+            2: self.__controlador_clientes,
+            3: self.__controlador_funcionarios,
+            4: self.__controlador_alugueis.abre_tela,
+            0: self.finaliza_sistema
         }
 
         while True:
