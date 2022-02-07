@@ -1,17 +1,10 @@
-from Modelo.pessoa import Pessoa
+from entidade.pessoa import Pessoa
 
 class Cliente(Pessoa):
-    def __init__(self, cpf, nome, idade, email: str, telefone: int):
-        super().__init__(cpf, nome, idade)
-        self.__email = email
+    def __init__(self, nome: str, cpf: int, telefone: int):
+        super().__init__(cpf, nome):
         self.__telefone = telefone
 
-    @property
-    def email(self):
-        return self.__email
-    @email.setter
-    def email(self, email):
-        self.__email = email
 
     @property
     def telefone(self):
