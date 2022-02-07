@@ -1,32 +1,35 @@
 from abstract_tela import AbstractTela
 
 class TelaCarro(AbstractTela):
-    def __init__(self, controlador):
-        self.__controlador = controlador
+  def tela_opcoes(self):
+    print("-------- Carros ----------")
+    print("Escolha a opcao")
+    print("1 - Incluir Carro")
+    print("2 - Alterar Carro")
+    print("3 - Listar Carro")
+    print("4 - Excluir Carro")
+    print("0 - Retornar")
 
-    def le_inteiro(self, mensagem: str = "", inteiros_validos: [] = None ):
-        while True:
-            valor_lido = input(mensagem)
+    opcao = int(input("Escolha a opcao: "))
+    return opcao
 
-            try:
-                inteiro = int(valor_lido)
+  def pega_dados_Carros(self):
+    print("-------- DADOS CARRO ----------")
+    modelo = input("Modelo: ")
+    placa = input("Placa: ")
 
-                if inteiros_validos and inteiro not in inteiros_validos:
-                    raise ValueError
-                return inteiro
+    return {"Modelo": modelo, "Placa": placa}
 
-            except ValueError:
-                print("Valor incorreto, digite um inteiro valido")
-                if inteiros_validos:
-                     print("Valores validos: ", inteiros_validos)
+  def mostra_carro(self, dados_carro):
+    print("MODELO DO CARRO: ", dados_carro["modelo"])
+    print("PLACA DO CARRO: ", dados_carro["placa"])
+    print("\n")
 
-    def exibe_opcoes(self):
-        print("-------- RESERVAR CARRO --------")
-        print("1 - Pegar Chave")
-        print("2 - Devolver Chave")
-        print("3 - Descricao de Emprestimo")
-        print("4 - Devolucao de Chave")
-        print("5 - Relatorio de Emprestimo")
-        print("0 - Voltar")
-        opcao = self.le_inteiro("Escolha a opcao: ", [1, 2, 3, 4, 5, 0])
-        return opcao
+  def seleciona_carro(self):
+    placa = input("Placa do carro que deseja reservar: ")
+    return placa
+
+  def mostra_mensagem(self, msg):
+    print(msg)
+
+  
