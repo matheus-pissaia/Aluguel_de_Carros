@@ -7,8 +7,10 @@ class Pessoa(ABC):
     def __init__(self, nome: str, cpf: int, telefone: int):
         if isinstance(nome, str):
             self.__nome = nome
+            
         if isinstance(cpf, int):
             self.__cpf = cpf
+            
         if isinstance(telefone, int):
             self.__telefone = telefone
 
