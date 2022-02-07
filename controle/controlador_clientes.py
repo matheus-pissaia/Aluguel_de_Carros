@@ -53,11 +53,11 @@ class ControladorClientes:
         for cliente in self.__cliente:
             print(cliente)
 
-    def buscar_cliente(self):
+    def buscar_cliente_por_cpf(self):
         print("Buscar um cliente ")
         cpf = int(input("Digite o CPF: "))
         for cliente in self.__cliente:
-            if Cliente.cpf == cpf:
+            if cliente.cpf == cpf:
                 return cliente
             return  "Cliente não encontrado"
 

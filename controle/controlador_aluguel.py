@@ -2,13 +2,14 @@ import datetime
 
 from entidade.aluguel import Aluguel
 from limite.tela_aluguel import TelaAluguel
+from controlador_sistema import ControladorSistema
 
 from random import randint
 
 
 class ControladorAlugueis:
 
-    def __init__(self, controlador_sistema):
+    def __init__(self, controlador_sistema: ControladorSistema):
         self.__controlador_sistema = controlador_sistema
         self.__alugueis = []
         self.__carros_alugados = []
@@ -44,13 +45,14 @@ class ControladorAlugueis:
         pass
 
     def incluir_aluguel(self):
+        self.__controlador_sistema.controlador_carros.lista_carros()
         dados_aluguel = self.__tela_aluguel.pega_dados_aluguel()
 
         carro = self.__controlador_sistema.\
             controlador_carros.pega_carro_por_placa(dados_aluguel["carro"])
 
         cliente = self.__controlador_sistema.\
-            controlador_clientes.pega_cliente_por_cpf(dados_aluguel["cpf_cliente"])
+            controlador_clientes.buscar_cliente_por_cpf(dados_aluguel["cpf_cliente"])
 
         funcionario = self.__controlador_sistema.\
             controlador_funcionarios.pega_funcionario_por_cpf(dados_aluguel["cpf_funcionario"])

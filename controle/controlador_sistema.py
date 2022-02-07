@@ -14,6 +14,18 @@ class ControladorSistema:
         self.__controlador_alugueis = ControladorAlugueis(self)
         self.__tela_sistema = TelaSistema()
 
+    @property
+    def controlador_clientes(self) -> ControladorClientes:
+        return self.__controlador_clientes
+
+    @property
+    def controlador_carros(self) -> ControladorCarros:
+        return self.__controlador_carros
+
+    @property
+    def controlador_funcionarios(self) -> ControladorFuncionarios:
+        return self.__controlador_funcionarios
+
     def finaliza_sistema(self):
         exit(0)
 
