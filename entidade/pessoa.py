@@ -11,6 +11,7 @@ class Pessoa(ABC):
             self.__cpf = cpf
         if isinstance(telefone, int):
             self.__telefone = telefone
+            
 
     @property
     def nome(self) -> str:
