@@ -1,4 +1,6 @@
-class TelaCliente():
+from abstract_tela import AbstractTela
+
+class TelaCliente(AbstractTela):
   def tela_opcoes(self):
     print("-------- CLIENTES ----------")
     print("Escolha a opcao")
