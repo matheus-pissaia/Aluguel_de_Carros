@@ -4,7 +4,7 @@ from abstract_tela import AbstractTela
 class TelaSistema(AbstractTela):
 
     def tela_opcoes(self):
-        print("----- Sistema Aluguel -----")
+        print("-----  Sistema Aluguel  -----")
         print("Escolha sua opção:")
         print("1 - Carros")
         print("2 - Clientes")
