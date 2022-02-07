@@ -1,3 +1,6 @@
+from abstract_tela import AbstractTela
+
+
 class TelaCliente:
     def __init__(self, controlador):
         self.__controlador = controlador
