@@ -1,4 +1,4 @@
-from abstract_tela import AbstractTela
+from limite.abstract_tela import AbstractTela
 
 class TelaCliente(AbstractTela):
     def __init__(self, controlador):

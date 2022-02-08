@@ -14,7 +14,6 @@ class AbstractTela(ABC):
                     raise ValueError
 
                 return opcao_int
-            
 
             except ValueError:
                 print("Valor incorreto: Digite um número inteiro positivo válido")
