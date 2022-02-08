@@ -1,6 +1,6 @@
 class Carro:
     
-    def __init__(self, placa: str, modelo: str):
+    def __init__(self, placa: str, modelo: str, cor: str):
         self.__placa = placa
         self.__modelo = modelo
 
