@@ -1,6 +1,6 @@
-from cliente import Cliente
-from carro import Carro
-from funcionario import Funcionario
+from entidade.cliente import Cliente
+from entidade.carro import Carro
+from entidade.funcionario import Funcionario
 from datetime import date
 
 

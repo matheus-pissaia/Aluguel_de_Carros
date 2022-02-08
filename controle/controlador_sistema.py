@@ -26,15 +26,17 @@ class ControladorSistema:
     def controlador_funcionarios(self) -> ControladorFuncionarios:
         return self.__controlador_funcionarios
 
+    def inicializa_sistema(self):
+        self.abre_tela()
+
     def finaliza_sistema(self):
         exit(0)
 
-    # Falta
     def abre_tela(self):
         lista_opcoes = {
-            1: self.__controlador_carros,
-            2: self.__controlador_clientes,
-            3: self.__controlador_funcionarios,
+            1: self.controlador_carros.abre_tela,
+            2: self.controlador_clientes.abre_tela,
+            3: self.controlador_funcionarios.tela_inicial,
             4: self.__controlador_alugueis.abre_tela,
             0: self.finaliza_sistema
         }

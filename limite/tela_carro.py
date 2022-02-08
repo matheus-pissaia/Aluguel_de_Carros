@@ -1,4 +1,5 @@
-from abstract_tela import AbstractTela
+from limite.abstract_tela import AbstractTela
+
 
 class TelaCarro(AbstractTela):
   def tela_opcoes(self):
@@ -18,7 +19,7 @@ class TelaCarro(AbstractTela):
     modelo = input("Modelo: ")
     placa = input("Placa: ")
 
-    return {"Modelo": modelo, "Placa": placa}
+        return {"modelo": modelo, "placa": placa}
 
   def mostra_carro(self, dados_carro):
     print("MODELO DO CARRO: ", dados_carro["modelo"])
