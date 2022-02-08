@@ -11,7 +11,7 @@ class ControladorCarros():
   def pega_carro_por_placa(self, placa: str):
     for carro in self.__carros:
       if(carro.placa == placa):
-        return livro
+        return carro
     return None
 
   def incluir_carro(self):
