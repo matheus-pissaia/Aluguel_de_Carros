@@ -35,7 +35,7 @@ class TelaFuncionario(AbstractTela):
             print("Funcionario não encontrado!")
 
     def seleciona_funcionario(self):
-        cpf_funcionario = int(input("CPF do funcionario que deseja selecionar: "))
+        cpf_funcionario = int(input(" CPF do funcionario que deseja selecionar: "))
 
         return cpf_funcionario
 

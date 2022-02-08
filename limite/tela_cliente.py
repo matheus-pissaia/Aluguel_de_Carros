@@ -35,7 +35,7 @@ class TelaCliente(AbstractTela):
 
 
     def seleciona_cliente(self):
-        cpf_cliente = int(input("CPF do cliente que deseja selecionar: "))
+        cpf_cliente = int(input(" CPF do cliente que deseja selecionar: "))
 
         return cpf_cliente
 

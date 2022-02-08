@@ -46,7 +46,7 @@ class ControladorFuncionarios():
             self.__funcionarios.remove(funcionario)
             self.listar_funcionario()
         else:
-            self.__tela_funcionario.mostrar_mensagem("funcionario não existente")
+            self.__tela_funcionario.mostrar_mensagem(" funcionario não existente ")
 
     def listar_funcionario(self):
         for funcionario in self.__funcionarios:

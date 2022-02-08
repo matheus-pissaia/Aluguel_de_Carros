@@ -45,7 +45,7 @@ class ControladorCarros():
       self.__carros.remove(carro)
       self.lista_carro()
     else:
-      self.__tela_carro.mostra_mensagem(" carro não existente")
+      self.__tela_carro.mostra_mensagem(" carro não existente ")
 
   def retornar(self):
     self.__controlador_sistema.abre_tela()

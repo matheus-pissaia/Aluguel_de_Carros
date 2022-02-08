@@ -26,7 +26,7 @@ class TelaCarro(AbstractTela):
     print("\n")
 
   def seleciona_carro(self):
-    placa = input("Placa do carro que deseja reservar: ")
+    placa = input(" Placa do carro que deseja reservar: ")
     return placa
 
   def mostra_mensagem(self, msg):

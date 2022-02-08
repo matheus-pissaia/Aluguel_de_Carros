@@ -47,7 +47,7 @@ class ControladorClientes():
            self.__clientes.remove(cliente)
            self.lista_clientes()
        else:
-           self.__tela_cliente.mostra_mensagem("cliente não existente")
+           self.__tela_cliente.mostra_mensagem(" cliente não existente ")
 
    def retornar(self):
        self.__controlador_sistema.abre_tela()
