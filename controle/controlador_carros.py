@@ -1,4 +1,4 @@
-from limite.tela_Carro import TelaCarro
+from limite.tela_carro import TelaCarro
 from entidade.carro import Carro
 
 class ControladorCarros():

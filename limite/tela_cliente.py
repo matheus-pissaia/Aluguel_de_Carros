@@ -1,10 +1,8 @@
 from abstract_tela import AbstractTela
 
-
 class TelaCliente(AbstractTela):
     def __init__(self, controlador):
         self.__controlador = controlador
-
 
     def exibe_opcoes(self):
         print("-------- CADASTRO DE CLIENTES --------")
@@ -19,7 +17,7 @@ class TelaCliente(AbstractTela):
     def pega_dados_cliente(self):
         print("----- DADOS CLIENTE -----")
         cpf = int(input("Cpf: "))
-        nome = int(input("Nome: "))
+        nome = input("Nome: ")
         telefone = int(input("Telefone: "))
         idade = int(input("Idade: "))
 
@@ -35,10 +33,11 @@ class TelaCliente(AbstractTela):
         else:
             print("Cliente não encontrado!")
 
-    def mostra_mensagem(self, mensagem):
-        print(mensagem)
 
     def seleciona_cliente(self):
         cpf_cliente = int(input("CPF do cliente que deseja selecionar: "))
 
         return cpf_cliente
+
+    def mostrar_mensagem(self, msg):
+        print(msg)

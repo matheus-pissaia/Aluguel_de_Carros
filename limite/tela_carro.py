@@ -10,7 +10,7 @@ class TelaCarro(AbstractTela):
     print("4 - Excluir Carro")
     print("0 - Retornar")
 
-    opcao = int(input("Escolha a opcao: "))
+    opcao = int(input("Escolha uma opcao: "))
     return opcao
 
   def pega_dados_Carros(self):
