@@ -1,73 +1,65 @@
+from entidade.funcionario import Funcionario
+from limite.tela_funcionario import TelaFuncionario
+
+
 class ControladorFuncionarios:
-    def __init__(self):
-        self.__tela_funcionario = TelaFuncionario(self)
-        self.__funcionario = []
+
+    def __init__(self, controlador_sistema):
+        self.__tela_funcionario = TelaFuncionario()
+        self.__funcionarios = []
+        self.__controlador_sistema = controlador_sistema
 
     def inicia(self):
         self.tela_inicial()
 
-    def incluir_funcionario(self):
-        continuar = "s"
-        while continuar == "S"  or continuar == "s":
-            while True:
-                try:
-                    a = int(input("CPF: "))
-                    break
-                except ValueError:
-                    print("Seu CPF deve conter apenas numeros!")
-                print("Digite novamente:")
-            b = str(input("Nome: "))
-            while True:
-                try:
-                    c = int(input("Idade: "))
-                    break
-                except ValueError:
-                    print("Somente numeros")
-                print("Tente novamente")
-            while True:
-                try:
-                    d = int(input("Matricula: "))
-                    break
-                except ValueError:
-                    print("Somente numeros, repita!")
-                print("Matricula: ")
-            e = str(input("Cargo: "))
-            funcionario = Funcionario(a, b, c, d, e)
-
-            if funcionario not in self.__funcionario and isinstance(funcionario, Funcionario):
-                self.__funcionario.append(funcionario)
-
-            continuar = str(input("S/s pra continuar. 0 voltar"))
-
-    def excluir_funcionario(self, funcionario: Funcionario):
-        for func in self.__funcionario:
-            print(self.__funcionario)
-        if isinstance(funcionario, Funcionario) and (funcionario in self.__funcionario):
-            self.__funcionario.remove(funcionario)
-
-    def listar_funcionario(self):
-        print("Funcionarios cadastrados: ")
-        for funcionarios in self.__funcionario:
-            return funcionarios
+    def pega_funcionario_por_cpf(self, cpf: int):
+        for funcionario in self.__funcionarios:
+            if (funcionario.cpf == cpf):
+                return funcionario
         return None
+
+    def incluir_funcionario(self):
+        dados_funcionario = self.__tela_funcionario.pega_dados_funcionario()
+        funcionario = Funcionario(dados_funcionario["nome"], dados_funcionario["cpf"], dados_funcionario["telefone"],
+                          dados_funcionario["matricula"])
+        self.__funcionarios.append(funcionario)
+
+    def excluir_funcionario(self):
+        self.lista_funcionarios()
+        cpf_funcionario = self.__tela_funcionario.seleciona_funcionario()
+        funcionario = self.pega_funcionario_por_cpf(cpf_funcionario)
+
+        if (funcionario is not None):
+            self.__funcionarios.remove(funcionario)
+            self.lista_afuncionarios()
+        else:
+            self.__tela_funcionario.mostra_mensagem("funcionario não existente")
+
+    def lista_funcionarios(self):
+        for funcionario in self.__funcionarios:
+            self.__tela_funcionario.mostra_funcionario(
+                {  "nome": funcionario.nome, "cpf": funcionario.cpf, "telefone": funcionario.telefone, "matricula": funcionario.matricula })
+
 
     def buscar_funcionario(self):
         print("Buscar um funcionario ")
 
         matricula = int(input("Matricula do funcionario: "))
-        for funcionario in self.__funcionario:
+        for funcionario in self.__funcionarios:
             if Funcionario.matricula == matricula:
                 return funcionario
             return "Funcionario não encontrado"
 
-    def encerrar_sistema(self):
-        exit(0)
+
 
     def tela_inicial(self):
         caso = {0: self.encerrar_sistema, 1: self.incluir_funcionario, 2: self.excluir_funcionario,
-                3: self.listar_funcionario, 4: self.buscar_funcionario}
+            3: self.lista_funcionarios, 4: self.buscar_funcionario}
 
         while True:
-            opcao = self.__tela_funcionario.exibe_opcoes()
-            opcao_escolhida = caso[opcao]
-            opcao_escolhida()
+           opcao = self.__tela_funcionario.exibe_opcoes()
+           opcao_escolhida = caso[opcao]
+           opcao_escolhida()
+
+    def encerrar_sistema(self):
+        exit(0)

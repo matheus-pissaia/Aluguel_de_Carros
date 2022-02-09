@@ -2,14 +2,13 @@ import datetime
 
 from entidade.aluguel import Aluguel
 from limite.tela_aluguel import TelaAluguel
-from controlador_sistema import ControladorSistema
 
 from random import randint
 
 
 class ControladorAlugueis:
 
-    def __init__(self, controlador_sistema: ControladorSistema):
+    def __init__(self, controlador_sistema):
         self.__controlador_sistema = controlador_sistema
         self.__alugueis = []
         self.__carros_alugados = []

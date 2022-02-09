@@ -17,7 +17,7 @@ class ControladorCarros:
 
   def incluir_carro(self):
     dados_carro = self.__tela_carro.pega_dados_carro()
-    carro = Carro(dados_carro["modelo"], dados_carro["placa"])
+    carro = Carro(dados_carro["placa"], dados_carro["modelo"])
     self.__carros.append(carro)
 
   def alterar_carro(self):
@@ -39,7 +39,7 @@ class ControladorCarros:
 
   def excluir_carro(self):
     self.lista_carro()
-    codigo_carro = self.__tela_carro.seleciona_carro()
+    placa_carro = self.__tela_carro.seleciona_carro()
     carro = self.pega_carro_por_placa(placa_carro)
 
     if(carro is not None):

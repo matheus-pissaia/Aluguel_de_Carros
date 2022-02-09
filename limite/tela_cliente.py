@@ -1,10 +1,8 @@
 from limite.abstract_tela import AbstractTela
 
 class TelaCliente(AbstractTela):
-    def __init__(self, controlador):
-        self.__controlador = controlador
 
-    def exibe_opcoes(self):
+    def tela_opcoes(self):
         print("-------- CADASTRO DE CLIENTES --------")
         print("1 -  Incluir novo cliente")
         print("2 -  Excluir  cliente")

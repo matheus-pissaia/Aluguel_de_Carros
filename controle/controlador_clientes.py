@@ -17,7 +17,7 @@ class ControladorClientes():
 
    def incluir_cliente(self):
        dados_cliente = self.__tela_cliente.pega_dados_cliente()
-       cliente = Cliente(dados_cliente["nome"], dados_cliente["telefone"], dados_cliente["cpf"])
+       cliente = Cliente(dados_cliente["nome"], dados_cliente["cpf"], dados_cliente["telefone"], dados_cliente["idade"])
        self.__clientes.append(cliente)
 
    def alterar_cliente(self):
@@ -30,13 +30,14 @@ class ControladorClientes():
            cliente.nome = novos_dados_cliente["nome"]
            cliente.telefone = novos_dados_cliente["telefone"]
            cliente.cpf = novos_dados_cliente["cpf"]
+           cliente.idade = novos_dados_cliente["idade"]
            self.lista_clientes()
        else:
            self.__tela_cliente.mostra_mensagem("cliente não existente")
 
    def lista_clientes(self):
        for cliente in self.__clientes:
-           self.__tela_cliente.mostra_cliente({"nome": cliente.nome, "telefone": cliente.telefone, "cpf": cliente.cpf})
+           self.__tela_cliente.mostra_cliente({"nome": cliente.nome, "telefone": cliente.telefone, "cpf": cliente.cpf, "idade": cliente.idade})
 
    def excluir_cliente(self):
        self.lista_clientes()
@@ -53,7 +54,7 @@ class ControladorClientes():
        self.__controlador_sistema.abre_tela()
 
    def abre_tela(self):
-       lista_opcoes = {1: self.incluir_cliente, 2: self.alterar_cliente, 3: self.lista_cliente, 4: self.excluir_cliente,
+       lista_opcoes = {1: self.incluir_cliente, 2: self.alterar_cliente, 3: self.lista_clientes, 4: self.excluir_cliente,
                        0: self.retornar}
 
        continua = True

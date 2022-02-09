@@ -2,8 +2,6 @@ from limite.abstract_tela import AbstractTela
 
 
 class TelaFuncionario(AbstractTela):
-    def __init__(self, controlador):
-        self.__controlador = controlador
 
     def exibe_opcoes(self):
         print("-------- CADASTRO DE FUNCIONARIOS --------")
@@ -20,8 +18,9 @@ class TelaFuncionario(AbstractTela):
         cpf = int(input("cpf: "))
         nome = input("nome: ")
         telefone = int(input("telefone"))
+        matricula = int(input("matricula"))
 
-        return {"cpf": cpf, "nome": nome, "telefone": telefone}
+        return {"cpf": cpf, "nome": nome, "telefone": telefone, "matricula": matricula}
 
 
 
