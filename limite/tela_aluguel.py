@@ -28,10 +28,17 @@ class TelaAluguel(AbstractTela):
         else:
             print("Não há nenhum aluguel registrado.")
 
-        
-    # Implementar método
-    def mostra_carros_disponiveis(self):
-        pass
+    def mostra_carros_disponiveis(self, dados_carros_disponiveis):
+        if dados_carros_disponiveis is not None:
+            print("----- CARROS DISPONIVEIS -----")
+            print("PLACA: ", dados_carros_disponiveis["placa"])
+            print("MODELO: ", dados_carros_disponiveis["modelo"])
+            print("\n")
+
+        else:
+            print("----- CARROS DISPONIVEIS -----")
+            print("Não há carros disponíveis.")
+            print("\n")
 
     def mostra_carros_alugados(self, dados_carros_alugados):
         if dados_carros_alugados is not None:

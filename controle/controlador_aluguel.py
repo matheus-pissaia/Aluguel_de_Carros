@@ -33,18 +33,30 @@ class ControladorAlugueis:
             return None
 
     def mostra_carros_alugados(self):
-        for carro in self.__carros_alugados:
-            self.__tela_aluguel.mostra_carros_alugados({
-                "placa": carro.placa,
-                "modelo": carro.modelo
-            })
+        if self.__carros_alugados:
+            for carro in self.__carros_alugados:
+                self.__tela_aluguel.mostra_carros_alugados({
+                    "placa": carro.placa,
+                    "modelo": carro.modelo
+                })
+        else:
+            self.__tela_aluguel.mostra_carros_alugados(None)
 
-    # Implementar método
     def mostra_carros_disponiveis(self):
-        pass
+        if self.__carros_disponiveis:
+            for carro in self.__carros_disponiveis:
+                self.__tela_aluguel.mostra_carros_disponiveis({
+                    "placa": carro.placa,
+                    "modelo": carro.modelo
+                })
+        else:
+            self.__tela_aluguel.mostra_carros_disponiveis(None)
 
     def incluir_aluguel(self):
-        self.__controlador_sistema.controlador_carros.lista_carros()
+        self.__controlador_sistema.controlador_carros.lista_carro()
+        self.__controlador_sistema.controlador_clientes.lista_clientes()
+        self.__controlador_sistema.controlador_funcionarios.lista_funcionarios()
+
         dados_aluguel = self.__tela_aluguel.pega_dados_aluguel()
 
         carro = self.__controlador_sistema.\

@@ -38,5 +38,5 @@ class TelaFuncionario(AbstractTela):
 
         return cpf_funcionario
 
-    def mostrar_mensagem(self, msg):
+    def mostra_mensagem(self, msg):
         print(msg)

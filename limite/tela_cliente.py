@@ -37,5 +37,5 @@ class TelaCliente(AbstractTela):
 
         return cpf_cliente
 
-    def mostrar_mensagem(self, msg):
+    def mostra_mensagem(self, msg):
         print(msg)
